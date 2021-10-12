@@ -56,7 +56,7 @@ public class MyStringCollectionImplTests {
     }
 
     @Test
-    public void checkEquals() {
+    public void testEquals() {
         StringCollection c1 = new MyStringCollectionImpl();
 
         addElementsToCollection(c,"one","two","four");
