@@ -1,6 +1,6 @@
 package homework13;
 
-import java.util.*;
+import java.util.Collection;
 
 public class StreamsInAction {
 
