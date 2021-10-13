@@ -1,18 +1,19 @@
 package homework13;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamsInAction {
 
     public static double getAverageOfCollection(Collection<Integer> collection) {
-        // не добавил проверку isPresent для лаконичности кода, но добавлю, если это критично
         return collection
                 .stream()
                 .mapToInt(Integer::intValue)
                 .average()
-                .getAsDouble();
+                .orElse(0.0);
     }
 
     public static Collection<String> getCollectionOfEnglishWordsInUpperCase(Collection<String> collection, String typeOfReturnedCollection) {
@@ -27,10 +28,13 @@ public class StreamsInAction {
         }
     }
 
-    public static void filterLowerCaseAndPrint(Collection<String> collection){
-        collection.stream()
+    public static String filterLowerCaseAndPrint(Collection<String> collection){
+        return collection
+                .stream()
                 .filter(n -> n.matches("[a-zа-я]*"))
                 .filter(n -> n.length() == 4)
-                .forEach(System.out::println);
+                .peek(System.out::println)
+                .reduce((a, b) -> a + " " + b)
+                .orElse("");
     }
 }

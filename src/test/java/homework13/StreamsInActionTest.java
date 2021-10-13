@@ -1,6 +1,7 @@
 package homework13;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,8 +9,14 @@ import java.util.List;
 import java.util.Set;
 
 public class StreamsInActionTest {
-    static List<Integer> myIntegers= new ArrayList<>();
-    static List<String> myStrings = new ArrayList<>();
+    static List<Integer> myIntegers;
+    static List<String> myStrings;
+
+    @Before
+    public void beforeEachTest(){
+        myIntegers = new ArrayList<>();
+        myStrings = new ArrayList<>();
+    }
 
     @Test
     public void testGetAverageOfCollection() {
@@ -44,8 +51,8 @@ public class StreamsInActionTest {
         Set<String> mySet = (Set<String>) StreamsInAction.getCollectionOfEnglishWordsInUpperCase(myStrings,"Set");
         System.out.println(myList);
         System.out.println(mySet);
-        Assert.assertEquals(7, myList.size());
-        Assert.assertEquals(6, mySet.size());
+        Assert.assertEquals(5, myList.size());
+        Assert.assertEquals(4, mySet.size());
     }
 
     @Test
@@ -57,6 +64,6 @@ public class StreamsInActionTest {
         myStrings.add("daddy");
         myStrings.add("aunt");
 
-        StreamsInAction.filterLowerCaseAndPrint(myStrings);
+        Assert.assertEquals("мама aunt", StreamsInAction.filterLowerCaseAndPrint(myStrings));
     }
 }
